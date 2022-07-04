@@ -7,10 +7,7 @@ class _Loader extends EventsObject {
   ];
   
   audios = {
-    music: "assets/audio/bg-music.mp3",
-    shuffle: "assets/audio/shuffle.mp3",
-    play: "assets/audio/play.mp3",
-    draw: "assets/audio/draw.mp3",
+    music: "assets/audio/bg-music.mp3"
   };
 
   totalCnt = 0;
