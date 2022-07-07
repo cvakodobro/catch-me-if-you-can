@@ -5,24 +5,24 @@ import { setSurprise } from "../../../stores/features/gameSlice";
 
 const Root = styled.div`
   border-radius: 1rem;
-  box-shadow: 1px 3px 18px rgb(0 6 50);
+  box-shadow: 1px 3px 18px #264653;
   position: absolute;
-  top: 35%;
-  margin-left: auto;
-  margin-right: auto;
-  left: 0;
-  right: 0;
-  width: 60%;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  // margin-left: auto;
+  // margin-right: auto;
+  width: 20rem;
   padding: 25px 40px;
-  background: #253174;
+  background: #35978b;
   color: white;
 `;
 
 const Surprise = () => {
   const dispatch = useDispatch();
   const surprise = useSelector((state) => state.game.surprise);
-  //   const currentPlayerId = useSelector((state) => state.game.currentPlayerId);
-  //   const playerId = useSelector((state) => state.game.playerId);
+  // const currentPlayerId = useSelector((state) => state.game.currentPlayerId);
+  // const playerId = useSelector((state) => state.game.playerId);
 
   useEffect(() => {
     if (surprise) {
@@ -34,9 +34,6 @@ const Surprise = () => {
 
   return surprise ? (
     <Root>
-      <header>
-        {/* <Timer duration={duration} timeoutFn={this.checkAnswer(null, correctAnswer)} stopTimer={this.state.stopTimer} /> */}
-      </header>
       <p>{surprise.message}</p>
     </Root>
   ) : null;

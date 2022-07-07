@@ -56,7 +56,7 @@ const StartPage = () => {
         }}
         className="img"
       >
-        <img src="assets/images/logo512.png" alt="logo" />
+        <img src="assets/images/belo.svg" alt="logo" />
       </motion.div>
       <Typography
         variant="h4"

@@ -10,8 +10,8 @@
   --green: hsl(122, 93%, 59%);
   --blue: hsl(224, 93%, 59%);
 
-  --primary: #020f6c;
-  --secondary: cyan;
+  --primary: #2a9d8f;
+  --secondary: #f4a261;
   --panel-bg: rgba(0, 0, 0, 0.3);
 
   --cardWidth: 150px;
@@ -40,7 +40,7 @@
     --fontSmall: 1.4rem;
   }
 }
-@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap");
 
 body {
   margin: 0;
@@ -51,7 +51,7 @@ body {
 
 * {
   /* font-family: "Cabin", sans-serif !important; */
-  font-family: "Roboto Mono", monospace !important;
+  font-family: 'Poppins', sans-serif !important;
 }
 
 code {

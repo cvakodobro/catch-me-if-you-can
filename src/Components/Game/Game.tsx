@@ -39,7 +39,7 @@ export default function Game() {
       dispatch(moveCurrentPlayer(direction));
       setTimeout(() => {
         movePlayer(
-          (startPosition + direction) % 24,
+          (((startPosition + direction) % 24) + 24) % 24,
           endPosition,
           direction,
           currentPlayerId
@@ -95,7 +95,7 @@ export default function Game() {
     });
 
     API.onFinishGame((winnerPlayer) => {
-      console.log(winner)
+      console.log(winner);
       setWinner(winnerPlayer);
       setFinished(true);
     });

@@ -61,10 +61,15 @@ const JoinServer = () => {
 
   const handleJoinServer = async () => {
     const serverId = servers[selectedServer].id;
-    const playerId = await API.joinServer(serverId, password);
-    dispatch(setPlayerId(playerId));
-    dispatch(setInLobby(true));
-    navigate("/waiting-lobby");
+    try {
+      const playerId = await API.joinServer(serverId, password);
+      console.log(playerId);
+      dispatch(setPlayerId(playerId));
+      dispatch(setInLobby(true));
+      navigate("/waiting-lobby");
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -80,14 +85,14 @@ const JoinServer = () => {
             <p
               style={{
                 color: `${showPrivate ? " white" : "gray"}`,
-                textShadow: `${showPrivate ? "0 0 3px white" : ""}`,
+                // textShadow: `${showPrivate ? "0 0 3px white" : ""}`,
               }}
             >
               Show Private Servers
             </p>
             <Checkbox
               defaultChecked
-              color="info"
+              color="quiz"
               onChange={() => {
                 setShowPrivate(!showPrivate);
                 setSelectedServer(null);
@@ -129,7 +134,7 @@ const JoinServer = () => {
                 >
                   {index === selectedServer && server.isPrivate ? (
                     <>
-                      <CTableCell>{server.serverName}</CTableCell>
+                      <CTableCell>{server.name}</CTableCell>
                       <TextField
                         type="password"
                         placeholder="Enter the server password"

@@ -7,7 +7,7 @@ const CButton = styled(MuiButton)`
     padding: 16px 36px;
     text-transform: capitalize;
     background-color: rgba(0, 0, 0, 0.3);
-    border: 1px solid rgb(2 15 108);
+    border: 1px solid #264653;
     border-radius: 12px;
     text-align: center;
     color: white;

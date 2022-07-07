@@ -3,7 +3,7 @@ import { EventsObject } from "./EventsObject";
 
 class _Loader extends EventsObject {
   imgs = [
-    "assets/images/logo512.png",
+    "assets/images/belo.svg",
   ];
   
   audios = {

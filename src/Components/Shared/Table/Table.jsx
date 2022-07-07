@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const TableContainer = styled.div`
   min-height: 35vh;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: #00000033;
   border-radius: 1rem;
 
   color: white;
@@ -31,7 +31,7 @@ const TableHead = styled.div`
 `;
 
 const TableCell = styled.p`
-  border-bottom: 1px solid rgb(2 15 108);
+  border-bottom: 1px solid #f4a261;
   color: #fff;
 `;
 

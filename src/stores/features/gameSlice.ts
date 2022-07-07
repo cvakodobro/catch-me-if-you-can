@@ -93,7 +93,9 @@ export const gameSlice = createSlice({
     moveCurrentPlayer(state, action: PayloadAction<number>) {
       state.question = null;
       state.players[state.currentPlayer].position =
-        (state.players[state.currentPlayer].position + action.payload) % 24;
+        (((state.players[state.currentPlayer].position + action.payload) % 24) +
+          24) %
+        24;
     },
 
     updatePlayers(state, action: PayloadAction<Player[]>) {

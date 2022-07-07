@@ -6,10 +6,10 @@ const CAvatar = styled.div`
   max-width: 120px;
   border-radius: 50%;
   border: ${(props) => props.border} solid
-    ${(props) => (props.color ? props.color : "rgb(0 3 24)")};
+    ${(props) => (props.color ? props.color : "#264653")};
   position: relative;
   padding-top: 100%;
-  box-shadow: 0px 0px 6px 3px rgb(23 25 41);
+  box-shadow: 0px 0px 6px 3px ${(props) => (props.color ? props.color : "#264653")};
   box-sizing: content-box;
   ${(props) => (props.removed ? "filter: grayscale(1)" : "")};
 
@@ -29,7 +29,7 @@ const CAvatar = styled.div`
 const Avatar = ({ seed, color, border = "1px", removed }) => {
   return (
     <CAvatar color={color} border={border} removed={removed}>
-      <img src={`https://avatars.dicebear.com/api/male/${seed}.svg`} alt="" />
+      <img src={`https://avatars.dicebear.com/api/adventurer-neutral/${seed}.svg`} alt="" />
     </CAvatar>
   );
 };

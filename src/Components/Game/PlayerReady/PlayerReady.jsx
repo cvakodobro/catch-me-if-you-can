@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { startQuestions } from "../../../stores/features/gameSlice";
@@ -6,11 +6,9 @@ import { startQuestions } from "../../../stores/features/gameSlice";
 const Root = styled.div`
   position: absolute;
   top: 50%;
-  margin-left: auto;
-  margin-right: auto;
-  left: 0;
-  right: 0;
-  width: 80%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  color: white;
 `;
 
 const PlayerReady = () => {
@@ -48,7 +46,7 @@ const PlayerReady = () => {
   return waitingToStartWithQuestions ? (
     <Root player={currentPlayerId === playerId}>
       <p>
-        Player {playerName} is starting in {seconds}
+        {playerName} is starting in {seconds}
       </p>
     </Root>
   ) : null;

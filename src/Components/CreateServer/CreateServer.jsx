@@ -14,7 +14,7 @@ import { setInLobby, setPlayerId } from "../../stores/features/gameSlice";
 const CreateServer = () => {
   const [serverName, setServerName] = useState("");
   const [serverPassword, setServerPassword] = useState("");
-  const [isPrivate, setIsPrivate] = useState(true);
+  const [isPrivate, setIsPrivate] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -48,8 +48,8 @@ const CreateServer = () => {
           >
             <p
               style={{
-                color: `${isPrivate ? "white" : "gray"}`,
-                textShadow: `${isPrivate ? "0 0 3px white" : ""}`,
+                color: `${isPrivate ? "white" : "#264653"}`,
+                // textShadow: `${isPrivate ? "0 0 3px white" : ""}`,
               }}
             >
               Private
@@ -62,8 +62,8 @@ const CreateServer = () => {
             />
             <p
               style={{
-                color: `${!isPrivate ? "white" : "gray"}`,
-                textShadow: `${!isPrivate ? "0 0 3px white" : ""}`,
+                color: `${!isPrivate ? "white" : "#264653"}`,
+                // textShadow: `${!isPrivate ? "0 0 3px white" : ""}`,
               }}
             >
               Public
@@ -77,6 +77,7 @@ const CreateServer = () => {
 
               <TextField
                 type="password"
+                autoComplete="new-password"
                 label="server-password"
                 value={serverPassword}
                 onChange={(e) => setServerPassword(e.target.value)}

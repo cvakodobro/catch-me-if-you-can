@@ -1,6 +1,7 @@
 import Grid from "@mui/material/Grid";
 import { motion } from "framer-motion";
 import styled from "styled-components";
+import { ReactComponent as Logo } from "../../../assets/belo.svg";
 
 const Paper = styled.div`
   background: var(--panel-bg);
@@ -9,15 +10,16 @@ const Paper = styled.div`
   text-align: center;
   min-height: 60vh;
   border-radius: 1rem;
-  box-shadow: 1px 3px 18px rgb(0 6 50);
+  box-shadow: 1px 3px 18px #264653;
   position: relative;
 
   .logo {
-    width: 150px;
+    // width: 150px;
     position: absolute;
     top: 0;
     left: 50%;
-    transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%) rotateZ(15deg);
+    height: auto;
   }
 `;
 
@@ -36,7 +38,8 @@ const APaper = ({ children, ...props }) => {
     >
       <Grid item xs={12} md={10} lg={8}>
         <Paper>
-          <img className="logo" src="assets/images/logo512.png" alt="" />
+          <Logo className='logo' width={220} height={150}/>
+          {/* <svg className="logo" src="assets/images/belo.svg" alt="" /> */}
           {children}
         </Paper>
       </Grid>

@@ -26,9 +26,9 @@ const MainMenu = () => {
           alignItems="center"
           justifyContent="center"
           spacing={2}
-          sx={12}
+          xs={12}
         >
-          <Grid item xs={12} md={5}>
+          <Grid item xs={12} md={8}>
             <Button
               disabled={!API.isOnline}
               style={{ width: "80%" }}
@@ -39,10 +39,7 @@ const MainMenu = () => {
               <Typography>Create A Game</Typography>
             </Button>
           </Grid>
-          <Grid item sx={{ display: { xs: "none", md: "initial" } }} md={2}>
-            <Typography>OR</Typography>
-          </Grid>
-          <Grid item xs={12} md={5}>
+          <Grid item xs={12} md={8}>
             <Button
               disabled={!API.isOnline}
               style={{ width: "80%" }}
@@ -54,7 +51,7 @@ const MainMenu = () => {
             </Button>
           </Grid>
         </Grid>
-        <Grid item container alignItems="center" justifyContent="center" mt={6}>
+        <Grid item container alignItems="center" justifyContent="center" mt={4}>
           <Grid item xs={6}>
             <Link style={style} to="/create-user">
               Profile Setting
