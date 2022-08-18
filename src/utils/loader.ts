@@ -31,7 +31,7 @@ class _Loader extends EventsObject {
 
   preloadImage(url: string) {
     try {
-      var _img = new Image();
+      let _img = new Image();
       _img.src = url;
       _img.onload = this.onProgress;
     } catch (e) {

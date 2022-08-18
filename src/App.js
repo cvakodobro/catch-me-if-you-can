@@ -38,7 +38,7 @@ function App() {
   const location = useLocation();
 
   const onLoaded = () => {
-    GameAudio.playMusic("music");
+    // GameAudio.playMusic("music");
     setLoadingAssets(false);
   };
 

@@ -56,7 +56,7 @@ export class OnlineServer implements ServerInterface {
     });
   }
 
-  next(index: number): void {
+  next(index: number | null): void {
     socket.emit("next", { answerIndex: index });
   }
 

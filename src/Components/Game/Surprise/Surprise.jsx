@@ -10,8 +10,6 @@ const Root = styled.div`
   top: 50%;
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
-  // margin-left: auto;
-  // margin-right: auto;
   width: 20rem;
   padding: 25px 40px;
   background: #35978b;

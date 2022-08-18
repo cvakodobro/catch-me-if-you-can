@@ -76,6 +76,7 @@ export const gameSlice = createSlice({
 
     answerQuestion(state, action: PayloadAction<number>) {
       console.log(state.questionNumber);
+      console.log("saljem odgovor", action.payload);
       API.next(action.payload);
       state.questionNumber = state.questionNumber + 1;
     },
@@ -113,7 +114,8 @@ export const gameSlice = createSlice({
     },
 
     setPlayers(state, action: PayloadAction<Player[]>) {
-      state.removedPlayer = null;
+      if (state.removedPlayer?.id !== state.playerId)
+        state.removedPlayer = null;
       state.players = action.payload;
     },
 

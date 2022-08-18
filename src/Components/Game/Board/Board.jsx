@@ -35,57 +35,28 @@ const Player = styled.div`
   );
 `;
 
+const ramp = (x) => (x > 0 ? x : 0);
+const f = (i, pom) =>
+  ramp(i - pom) - ramp(i - 6 - pom) - ramp(i - 12 - pom) + ramp(i - 18 - pom);
+
 const Board = () => {
   const players = useSelector((state) => state.game.players);
 
   return (
     <Root>
-      {[...Array(24)].map((el, i) => {
-        if (i < 6) return <Tile key={i} topPos={0} leftPos={i % 6}></Tile>;
-        else if (i >= 6 && i < 12)
-          return <Tile key={i} topPos={i % 6} leftPos={6}></Tile>;
-        else if (i >= 12 && i < 18)
-          return <Tile key={i} topPos={6} leftPos={6 - (i % 6)}></Tile>;
-        else return <Tile key={i} topPos={6 - (i % 6)} leftPos={0}></Tile>;
+      {[...Array(24)].map((_el, i) => {
+        return <Tile key={i} leftPos={f(i, 0)} topPos={f(i, 6)} />;
       })}
       {players.map((player) => {
         if (player.removed) return null;
-        if (player.position < 6)
-          return (
-            <Player
-              key={player.id}
-              color={player.color}
-              topPos={0}
-              leftPos={player.position % 6}
-            ></Player>
-          );
-        else if (player.position >= 6 && player.position < 12)
-          return (
-            <Player
-              key={player.id}
-              color={player.color}
-              topPos={player.position % 6}
-              leftPos={6}
-            ></Player>
-          );
-        else if (player.position >= 12 && player.position < 18)
-          return (
-            <Player
-              key={player.id}
-              color={player.color}
-              topPos={6}
-              leftPos={6 - (player.position % 6)}
-            ></Player>
-          );
-        else
-          return (
-            <Player
-              key={player.id}
-              color={player.color}
-              topPos={6 - (player.position % 6)}
-              leftPos={0}
-            ></Player>
-          );
+        return (
+          <Player
+            key={player.id}
+            color={player.color}
+            topPos={f(player.position, 6)}
+            leftPos={f(player.position, 0)}
+          ></Player>
+        );
       })}
     </Root>
   );

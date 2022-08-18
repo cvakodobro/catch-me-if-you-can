@@ -2,6 +2,8 @@ import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { AnimatePresence, motion } from "framer-motion";
 import { answerQuestion } from "../../../stores/features/gameSlice";
+import { useEffect, useRef, useState } from "react";
+import Timer from "../Timer/Timer";
 
 const Root = styled(motion.div)`
   border-radius: 1rem;
@@ -13,7 +15,7 @@ const Root = styled(motion.div)`
   left: 0;
   right: 0;
   width: 40rem;
-  padding: 25px 40px;
+  padding: 25px 30px;
   background: #35978b;
   color: white;
   pointer-events: ${(props) => (props.player ? "auto" : "none")};
@@ -49,9 +51,30 @@ const Root = styled(motion.div)`
     border: none;
     box-shadow: 1px 1px 15px #264653;
   }
+
+  .question-text {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .timer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-left: 0.5rem;
+  }
+
+  .seconds {
+    // text-align: center;
+    width: 1rem;
+    display: flex;
+    justify-content: flex-end;
+  }
 `;
 
 const Question = () => {
+  const interval = useRef();
   const dispatch = useDispatch();
   const q = useSelector((state) => state.game.question);
   const currentPlayerId = useSelector((state) => state.game.currentPlayerId);
@@ -63,8 +86,46 @@ const Question = () => {
   const answerIndex = useSelector((state) => state.game.answerIndex);
 
   const onClick = (index) => {
-    dispatch(answerQuestion(index));
+    if (seconds !== 0) {
+      dispatch(answerQuestion(index));
+    }
   };
+
+  const [seconds, setSeconds] = useState(5);
+  const [direction, setDirection] = useState(null);
+
+  const resetTimer = () => {
+    setSeconds(5);
+    setDirection("forward");
+    if (interval.current) clearInterval(interval.current);
+    const id = setInterval(() => {
+      setSeconds((seconds) => seconds - 1);
+    }, 1000);
+    interval.current = id;
+  };
+
+  useEffect(() => {
+    resetTimer();
+  }, [q]);
+
+  useEffect(() => {
+    if (answerIndex !== null) {
+      if (interval.current) {
+        setDirection(null);
+        clearInterval(interval.current);
+      }
+    }
+  }, [answerIndex]);
+
+  useEffect(() => {
+    if (q && seconds === 0) {
+      if (interval.current) {
+        setDirection(null);
+        clearInterval(interval.current);
+      }
+      if (currentPlayerId === playerId) dispatch(answerQuestion(null));
+    }
+  }, [seconds]);
 
   return q && !waitingToStartWithQuestions ? (
     <AnimatePresence>
@@ -76,10 +137,13 @@ const Question = () => {
         exit={{ x: -100, opacity: 0 }}
         transition={{ duration: 0.2 }}
       >
-        <header>
-          {/* <Timer duration={duration} timeoutFn={this.checkAnswer(null, correctAnswer)} stopTimer={this.state.stopTimer} /> */}
-        </header>
-        <p>{decodeURIComponent(q.question)}</p>
+        <div className="question-text">
+          <p>{decodeURIComponent(q.question)}</p>
+          <div className="timer">
+            <Timer direction={direction} />
+            <div className="seconds">{seconds}</div>
+          </div>
+        </div>
         <footer>
           {q.answers?.map((answer, i) => {
             return (
