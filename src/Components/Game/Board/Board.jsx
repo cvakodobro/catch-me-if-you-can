@@ -36,8 +36,9 @@ const Player = styled.div`
 `;
 
 const ramp = (x) => (x > 0 ? x : 0);
-const f = (i, pom) =>
-  ramp(i - pom) - ramp(i - 6 - pom) - ramp(i - 12 - pom) + ramp(i - 18 - pom);
+
+const f = (i, shift) =>
+  ramp(i - shift) - ramp(i - 6 - shift) - ramp(i - 12 - shift) + ramp(i - 18 - shift);
 
 const Board = () => {
   const players = useSelector((state) => state.game.players);
